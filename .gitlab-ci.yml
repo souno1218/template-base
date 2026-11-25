@@ -1,0 +1,8 @@
+# GitLab 用の CI。処理は .github/workflows/ci.yml と同じ。
+# 社内の GitLab では動作を確認していない。Runner で使えるイメージと、
+# プロキシ（pip が PyPI に出られるか、社内の CA 証明書が要るか）に合わせて直すこと。
+okf:
+  image: python:3.12
+  script:
+    - pip install pyyaml
+    - python tools/okf/validate.py .okf --strict
